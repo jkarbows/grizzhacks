@@ -25,8 +25,8 @@ wss.on("connection", function(ws) {
   console.log("websocket connection open")
 
   ws.on("message", function(data, flags) {
-    console.log(data.toString())
-    wss.broadcast(data)
+    console.log(JSON.stringify(data))
+    wss.broadcast(JSON.stringify(data))
     client.send(data)
     console.log("message broadcast")
   })
