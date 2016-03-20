@@ -32,7 +32,7 @@
         var li = document.createElement('li');
         li.innerHTML = JSON.parse(event.data);
         document.querySelector('#pings').appendChild(li);
-        console.log(event.data)
+        data = JSON.parse(event.data)
         frequency = Math.abs(event.data.x)
         synth.pitch(40)
         lastx = event.data.x;
