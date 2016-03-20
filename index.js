@@ -25,7 +25,7 @@ wss.on("connection", function(ws) {
   console.log("websocket connection open")
 
   wss.on("message", function(data, flags) {
-    broadcast(data)
+    wss.broadcast(data)
     client.send(data)
     console.log("message broadcast")
   })
@@ -40,22 +40,7 @@ wss.on("connection", function(ws) {
   }
 })
 
-var broadcast = function (data) {
-
-  try {
-    webSockets.forEach(function (ws) {
-
-      if (!ws || !ws.clients) {
-        return;
-      }
-
-      for (var i = 0, il = ws.clients.length; i < il; ++i) {
-        var client = ws.clients[i];
-        if (client && client.send) {
-          client.send(data.toString());
-        }
-      }
-    });
-  }
-  catch (err) {}
+wss.broadcast = function(data) {
+  for (var i in this.clients)
+    this.clients[i].send(data);
 };
