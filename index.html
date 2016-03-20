@@ -36,7 +36,7 @@
         document.querySelector('#pings').appendChild(li)
         data = JSON.parse(JSON.parse(event.data))
         
-        frequency += ~~((data.x - lastx) / 4)
+        frequency += ~~((data.x - lastx) / 5)
         if(frequency > 12000) {
           frequency = 12000
         } else if (frequency < 40) {
@@ -47,9 +47,9 @@
         synth.maxGain = amp
         lastx = data.x
         lastz = data.z
-        if(Math.abs(data.y > 2000)) {
+        /*if(Math.abs(data.y > 2000)) {
           synth.stop()
-        }
+        }*/
       };
     </script>
   </head>
