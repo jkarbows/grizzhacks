@@ -36,7 +36,7 @@
         document.querySelector('#pings').appendChild(li)
         data = JSON.parse(JSON.parse(event.data))
         
-        frequency += ~~((data.x - lastx) / 5)
+        frequency += ~~((data.x - lastx) / 4)
         if(frequency > 12000) {
           frequency = 12000
         } else if (frequency < 40) {
