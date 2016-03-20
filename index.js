@@ -29,7 +29,6 @@ wss.on("connection", function(ws) {
     /*for(f in data) {
       console.log(f);
     }*/
-    
     wss.broadcast(JSON.stringify(data))
     client.send(JSON.stringify(data))
     console.log("message broadcast")
