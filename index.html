@@ -32,10 +32,10 @@
         document.querySelector('#pings').appendChild(li);
         data = JSON.parse(event.data);
         if(data.x > lastx) {
-          frequency++
-          synth.stop()
+          frequency = Math.abs(frequency + (data.x - lastx))
           synth.pitch(frequency)
-          synth.play()
+        } else if(data.x < lastx) {
+          frequency = Math.abs(frequency - (lastx - data.x))
         }
         lastx = data.x;
         lastz = data.z;
