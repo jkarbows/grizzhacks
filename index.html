@@ -37,23 +37,23 @@
         data = JSON.parse(JSON.parse(event.data))
         
         if(data.x > lastx) {
-          if((data.x - lastx) > 70) {
-            frequency -= 10
-          } else if((data.x - lastx) > 40) {
-            frequency -= 4
+          if((data.x - lastx) > 45) {
+            frequency -= 9
+          } else if((data.x - lastx) > 20) {
+            frequency -= 3
           }
         } else if(lastx > data.x) {
-          if((lastx - data.x) > 70) {
-            frequency += 10
-          } else if((lastx - data.x) > 40) {
-            frequency += 4
+          if((lastx - data.x) > 45) {
+            frequency += 9
+          } else if((lastx - data.x) > 20) {
+            frequency += 3
           }
         }
-        /*if(frequency > 12000) {
+        if(frequency > 12000) {
           frequency = 12000
         } else if (frequency < 40) {
           frequency = 40
-        }*/
+        }
         synth.pitch(frequency)
         synth.maxGain = amp
         lastx = data.x;
