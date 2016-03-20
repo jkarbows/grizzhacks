@@ -39,17 +39,20 @@
         if(data.x > lastx) {
           if((data.x - lastx) > 100) {
             frequency -= 10
-          } else {
+          } else if((data.x - lastx) > 50) {
             frequency -= 4
           }
-          frequency = Math.abs(data.x)
-          synth.pitch(frequency)
         } else if(lastx > data.x) {
           if((lastx - data.x) > 100) {
             frequency += 10
           } else if((lastx - data.x) > 50) {
             frequency += 4
           }
+        }
+        if(frequency > 12000) {
+          frequency = 12000
+        } else if (frequency < 40) {
+          frequency = 40
         }
         synth.pitch(frequency)
         synth.maxGain = amp
