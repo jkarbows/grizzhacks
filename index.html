@@ -33,7 +33,7 @@
         data = JSON.parse(event.data);
         if(data.x > lastx) {
           frequency = Math.abs(frequency + (data.x - lastx))
-          synth.pitch(frequency)
+          synth.pitch(800)
         } else if(data.x < lastx) {
           frequency = Math.abs(frequency - (lastx - data.x))
         }
