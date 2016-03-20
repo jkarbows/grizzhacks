@@ -1,7 +1,7 @@
 var WebSocketServer = require("ws").Server
 var http = require("http")
 var express = require("express")
-var submono = require("submono")
+var submono = require("./submono")
 var app = express()
 var port = process.env.PORT || 5000
 
