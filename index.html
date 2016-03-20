@@ -36,13 +36,13 @@
         document.querySelector('#pings').appendChild(li)
         data = JSON.parse(JSON.parse(event.data))
         
-        frequency += ~~((data.x - lastx) / 40)
+        frequency += ~~((data.x - lastx) / 4)
         if(frequency > 12000) {
           frequency = 12000
         } else if (frequency < 40) {
           frequency = 40
         }
-        amp += ~~((data.z - lastz) / 
+        amp += ~~((data.z - lastz) / 40)
         console.log(frequency)
         console.log(amp)
         synth.pitch(frequency)
