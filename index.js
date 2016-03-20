@@ -18,7 +18,6 @@ var wss = new WebSocketServer({server: server})
 console.log("websocket server created")
 
 wss.on("connection", function(ws) {
-
   console.log("websocket connection open")
 
   ws.on("message", function(data, flags) {
