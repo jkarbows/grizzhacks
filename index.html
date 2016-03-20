@@ -32,11 +32,11 @@
         var li = document.createElement('li');
         li.innerHTML = JSON.parse(event.data);
         document.querySelector('#pings').appendChild(li);
-        data = JSON.parse(event.data)
-        frequency = Math.abs(event.data.x)
-        synth.pitch(40)
-        lastx = event.data.x;
-        lastz = event.data.z;
+        data = JSON.parse(JSON.parse(event.data))
+        frequency = Math.abs(data.x)
+        synth.pitch(frequency)
+        lastx = data.x;
+        lastz = data.z;
       };
     </script>
   </head>
