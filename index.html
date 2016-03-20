@@ -9,6 +9,7 @@
       ul {
         list-style: none;
         margin: 0;
+        margin-left: 20px;
         padding: 0;
       }
 
@@ -23,7 +24,7 @@
       // z is up/down
       var lastx = 0;
       var lastz = 0;
-      frequency = 440;
+      var frequency = 440;
       var host = location.origin.replace(/^http/, 'ws')
       var ws = new WebSocket(host);
       ws.onmessage = function (event) {
@@ -35,16 +36,17 @@
         synth.pitch(frequency)
         lastx = event.data.x;
         lastz = event.data.z;
+        synth.stop();
       };
     </script>
   </head>
   <body>
-    <h1>Pings</h1>
+    <h1>Accel</h1>
     <ul id='pings'></ul>
     <script>
     var Monosynth = function Monosynth(audioCtx, config) {
-  var synth;
-  var Synth = function Synth() {
+    var synth;
+    var Synth = function Synth() {
     synth = this;
     config = config || {};
     config.cutoff = config.cutoff || {};

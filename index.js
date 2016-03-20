@@ -26,7 +26,7 @@ wss.on("connection", function(ws) {
   ws.on("message", function(data, flags) {
     console.log(JSON.stringify(data))
     wss.broadcast(JSON.stringify(data))
-    client.send(JSON.stringify(data))
+    //client.send(JSON.stringify(data))
     console.log("message broadcast")
   })
 
