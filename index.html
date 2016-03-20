@@ -31,12 +31,9 @@
         li.innerHTML = JSON.parse(event.data);
         document.querySelector('#pings').appendChild(li);
         data = JSON.parse(event.data);
-        if(data.x > lastx) {
-          frequency = Math.abs(frequency + (data.x - lastx))
-          synth.pitch(800)
-        } else if(data.x < lastx) {
-          frequency = Math.abs(frequency - (lastx - data.x))
-        }
+        console.log(data)
+        frequency = Math.abs(data.x)
+        synth.pitch(frequency)
         lastx = data.x;
         lastz = data.z;
       };
