@@ -34,6 +34,7 @@
         if(data.x > lastx) {
           frequency++
           synth.pitch(frequency)
+          synth.play()
         }
         lastx = data.x;
         lastz = data.z;
