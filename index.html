@@ -22,18 +22,18 @@
       // everything here should only happen if isPlaying(fist closed on myo)
       // x is left/right
       // z is up/down
-      var lastx = 0;
-      var lastz = 0;
-      var frequency = 440;
+      var lastx = 0
+      var lastz = 0
+      var frequency = 440
       var amp = 0.7
       var data = ''
       var host = location.origin.replace(/^http/, 'ws')
       
-      var ws = new WebSocket(host);
+      var ws = new WebSocket(host)
       ws.onmessage = function (event) {
-        var li = document.createElement('li');
-        li.innerHTML = JSON.parse(event.data);
-        document.querySelector('#pings').appendChild(li);
+        var li = document.createElement('li')
+        li.innerHTML = JSON.parse(event.data)
+        document.querySelector('#pings').appendChild(li)
         data = JSON.parse(JSON.parse(event.data))
         
         if(data.x > lastx) {
@@ -54,11 +54,14 @@
         } else if (frequency < 40) {
           frequency = 40
         }
+        console.log(frequency)
         synth.pitch(frequency)
         synth.maxGain = amp
-        lastx = data.x;
-        lastz = data.z;
-        
+        lastx = data.x
+        lastz = data.z
+        if(Math.abs(data.y > 2000) {
+          synth.stop()
+        }
       };
     </script>
   </head>
