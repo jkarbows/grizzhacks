@@ -26,9 +26,6 @@ wss.on("connection", function(ws) {
   }, 1000)*/
   console.log("websocket connection open")
 
-  thereminNode.connect(gainNode)
-  theremin.frequency.value = 444
-
   ws.on("message", function(data, flags) {
     console.log(JSON.stringify(data))
     /*for(f in data) {
