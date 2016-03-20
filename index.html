@@ -18,12 +18,25 @@
     </style>
 
     <script>
+      // everything here should only happen if isPlaying(fist closed on myo)
+      // x is left/right
+      // z is up/down
+      var lastx = 0;
+      var lastz = 0;
+      frequency = 440;
       var host = location.origin.replace(/^http/, 'ws')
       var ws = new WebSocket(host);
       ws.onmessage = function (event) {
         var li = document.createElement('li');
         li.innerHTML = JSON.parse(event.data);
         document.querySelector('#pings').appendChild(li);
+        data = JSON.parse(event.data);
+        if(data.x > lastx) {
+          frequency++
+          synth.pitch(frequency)
+        }
+        lastx = data.x;
+        lastz = data.z;
       };
     </script>
   </head>
