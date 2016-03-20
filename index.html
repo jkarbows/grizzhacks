@@ -49,11 +49,11 @@
             frequency += 4
           }
         }
-        if(frequency > 12000) {
+        /*if(frequency > 12000) {
           frequency = 12000
         } else if (frequency < 40) {
           frequency = 40
-        }
+        }*/
         synth.pitch(frequency)
         synth.maxGain = amp
         lastx = data.x;
