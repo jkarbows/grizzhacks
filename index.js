@@ -11,6 +11,9 @@ server.listen(port)
 
 console.log("http server listening on %d", port)
 
+var webSockets = [];
+var client = null;
+
 var wss = new WebSocketServer({server: server})
 console.log("websocket server created")
 
@@ -25,4 +28,33 @@ wss.on("connection", function(ws) {
     console.log("websocket connection close")
     clearInterval(id)
   })
+  webSockets.push(ws)
+  if(!client) {
+    client = ws
+  }
 })
+
+wss.on("message", function(data, flags) {
+  broadcast(data)
+  client.send(data)
+})
+
+var broadcast = function (data) {
+
+  try {
+    webSockets.forEach(function (ws) {
+
+      if (!ws || !ws.clients) {
+        return;
+      }
+
+      for (var i = 0, il = ws.clients.length; i < il; ++i) {
+        var client = ws.clients[i];
+        if (client && client.send) {
+          client.send(data.toString());
+        }
+      }
+    });
+  }
+  catch (err) {}
+};
