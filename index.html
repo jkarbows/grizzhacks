@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+      body { margin: 0; padding: 0; box-sizing: border-box; color: #ccc;}
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    var socket = io.connect('http://localhost:3000');
+    socket.on('accel', function(data) {
+      console.log(data);
+      // turn accelerometer data into synthesizer freq
+    });
+    </script>
+  </head>
+  <body>
+    <p>word</p>
+  </body>
+</html>
