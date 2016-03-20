@@ -1,20 +1,34 @@
-<!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
     <style>
-      body { margin: 0; padding: 0; box-sizing: border-box; color: #ccc;}
+      body {
+        font-family: "Helvetica Neue", helvetica, arial;
+        padding: 15px;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      ul li {
+        line-height: 1.4;
+      }
     </style>
-    <script src="/socket.io/socket.io.js"></script>
+
     <script>
-    var socket = io.connect('http://localhost:3000');
-    socket.on('accel', function(data) {
-      console.log(data);
-      // turn accelerometer data into synthesizer freq
-    });
+      var host = location.origin.replace(/^http/, 'ws')
+      var ws = new WebSocket(host);
+      ws.onmessage = function (event) {
+        var li = document.createElement('li');
+        li.innerHTML = JSON.parse(event.data);
+        document.querySelector('#pings').appendChild(li);
+      };
     </script>
   </head>
   <body>
-    <p>word</p>
+    <h1>Pings</h1>
+    <ul id='pings'></ul>
   </body>
 </html>

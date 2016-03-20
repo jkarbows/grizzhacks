@@ -1,15 +1,18 @@
 {
-  "name": "grizzhacks",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "node-ws-test",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku-examples/node-ws-test.git"
   },
-  "author": "Jeremy Karbowski",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.13.4",
-    "socket.io": "^1.4.5"
+    "express": "^4.4.5",
+    "ws": "0.4.x"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "scripts": {
+    "start": "node index.js"
   }
 }
