@@ -14,6 +14,6 @@ io.on('connection', function(socket) {
     console.log('someone connected');
 });
 
-http.listen(80, function() {
+http.listen(3000, function() {
     console.log('listening to u like the nsa');
 });
