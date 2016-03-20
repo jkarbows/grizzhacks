@@ -33,6 +33,7 @@
         data = JSON.parse(event.data);
         if(data.x > lastx) {
           frequency++
+          synth.stop()
           synth.pitch(frequency)
           synth.play()
         }
