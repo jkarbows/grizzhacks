@@ -24,6 +24,12 @@ wss.on("connection", function(ws) {
 
   console.log("websocket connection open")
 
+  wss.on("message", function(data, flags) {
+    broadcast(data)
+    client.send(data)
+    console.log("message broadcast")
+  })
+
   ws.on("close", function() {
     console.log("websocket connection close")
     clearInterval(id)
@@ -32,11 +38,6 @@ wss.on("connection", function(ws) {
   if(!client) {
     client = ws
   }
-})
-
-wss.on("message", function(data, flags) {
-  broadcast(data)
-  client.send(data)
 })
 
 var broadcast = function (data) {
