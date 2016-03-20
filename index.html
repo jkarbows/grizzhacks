@@ -25,13 +25,14 @@
       var lastx = 0;
       var lastz = 0;
       var frequency = 440;
+      var data = ''
       var host = location.origin.replace(/^http/, 'ws')
       var ws = new WebSocket(host);
       ws.onmessage = function (event) {
         var li = document.createElement('li');
         li.innerHTML = JSON.parse(event.data);
         document.querySelector('#pings').appendChild(li);
-        console.log(event.data['x'])
+        console.log(event.data)
         frequency = Math.abs(event.data.x)
         synth.pitch(40)
         lastx = event.data.x;
