@@ -2,6 +2,10 @@ var WebSocketServer = require("ws").Server
 var http = require("http")
 var express = require("express")
 var app = express()
+var Theremin = require('openmusic-theremin')
+var audioContext = new AudioContext()
+var thereminNode = Theremin(audioContext)
+var gainNode = audioContext.createGain();
 var port = process.env.PORT || 5000
 
 app.use(express.static(__dirname + "/"))
@@ -23,6 +27,9 @@ wss.on("connection", function(ws) {
   }, 1000)*/
 
   console.log("websocket connection open")
+
+  thereminNode.connect(gainNode)
+  theremin.frequency.value = 444
 
   ws.on("message", function(data, flags) {
     console.log(JSON.stringify(data))
