@@ -31,7 +31,7 @@
         li.innerHTML = JSON.parse(event.data);
         document.querySelector('#pings').appendChild(li);
         data = JSON.parse(event.data);
-        console.log(data.x)
+        console.log(data['x'])
         frequency = Math.abs(data.x)
         synth.pitch(frequency)
         lastx = data.x;
