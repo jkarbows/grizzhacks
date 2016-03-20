@@ -2,10 +2,9 @@ var WebSocketServer = require("ws").Server
 var http = require("http")
 var express = require("express")
 var app = express()
-var Theremin = require('openmusic-theremin')
-var audioContext = new AudioContext()
-var thereminNode = Theremin(audioContext)
-var gainNode = audioContext.createGain();
+var freq = 444;
+var gain = 0.5;
+var theremin = require('./theremin.js')({gain: gain, freq: freq})
 var port = process.env.PORT || 5000
 
 app.use(express.static(__dirname + "/"))
