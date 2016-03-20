@@ -33,10 +33,9 @@
         document.querySelector('#pings').appendChild(li);
         console.log(event.data['x'])
         frequency = Math.abs(event.data.x)
-        synth.pitch(frequency)
+        synth.pitch(40)
         lastx = event.data.x;
         lastz = event.data.z;
-        synth.stop();
       };
     </script>
   </head>
