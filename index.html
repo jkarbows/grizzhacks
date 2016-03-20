@@ -37,18 +37,18 @@
         data = JSON.parse(JSON.parse(event.data))
         
         if(data.x > lastx) {
-          if((data.x - lastx) > 50) {
-            frequency += 10
+          if((data.x - lastx) > 100) {
+            frequency -= 10
           } else {
-            frequency += 4
+            frequency -= 4
           }
           frequency = Math.abs(data.x)
           synth.pitch(frequency)
         } else if(lastx > data.x) {
-          if((lastx - data.x) > 50) {
-            frequency -= 10
-          } else {
-            frequency -= 4
+          if((lastx - data.x) > 100) {
+            frequency += 10
+          } else if((lastx - data.x) > 50) {
+            frequency += 4
           }
         }
         synth.pitch(frequency)
