@@ -29,7 +29,6 @@ wss.on("connection", function(ws) {
 
   ws.on("close", function() {
     console.log("websocket connection close")
-    clearInterval(id)
   })
   webSockets.push(ws)
   if(!client) {
