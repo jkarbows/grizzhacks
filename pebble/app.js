@@ -45,7 +45,6 @@ main.on('click', 'down', function(e) {
 
 ws.onclose = function() {
     console.log("websocket dropped");
-    clearInterval(accdata);
 };
 
 function broadcast() {
